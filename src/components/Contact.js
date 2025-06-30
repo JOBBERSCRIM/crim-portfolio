@@ -6,13 +6,19 @@ function Contact() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
+    /**emailjs
       .sendForm(
         "service_nm93yqr", 
         "template_2w711up",
         form.current,
         "9gCUmzeTpbNqzk55L"
-      )
+      )*/
+     emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+)
       .then(
         () => alert("✅ Message sent successfully!"),
         (error) => alert("❌ Failed to send: " + error.text)
